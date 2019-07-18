@@ -3,7 +3,7 @@
 /* global $ */
 
 function handleSubmit() {
-  $('.js-randomDogForm').submit(event => {
+  $('.js-dogNumberForm').submit(event => {
     event.preventDefault();
     const number = $('.js-numberInput').val();
     $('.js-dogImagesSection').html('');
@@ -23,6 +23,7 @@ function getDogImage(number) {
 
 function renderImages(data) {
   for (let i = 0; i < data['message'].length; i++) {
+    console.log(data['message'][i]);
     $('.js-dogImagesSection').append(`
     <img src="${data['message'][i]}"></img>
     `);

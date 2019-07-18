@@ -12,15 +12,12 @@
       <h1>Random Dog Image</h1>
   </header>
   <main>
-    <form class="js-randomDogForm">
-        <label for="number">Please enter the number of dogs to display:</label><input required class="js-numberInput" value="3" type="number">
+    <form class="js-dogNumberForm">
+      <label for="number">Please enter the number of dogs to display:</label><input required class="js-numberInput" value="3" type="number" max="50" min="1">
     </form>
     <section class="js-dogImagesSection">
-
     </section>
   </main>
-  
-
   <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
