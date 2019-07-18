@@ -3,3 +3,7 @@
   margin: 0 auto;
 }
 
+img {
+  max-width: 40%;
+  max-height: 30%;
+}
