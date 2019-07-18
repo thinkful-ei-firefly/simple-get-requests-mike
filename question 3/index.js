@@ -5,8 +5,9 @@
 function handleSubmit() {
   $('.js-breedsForm').submit(event => {
     event.preventDefault();
-    const breedName = $('.js-breedsInput').val();
+    const breed = $('.js-breedsInput').val();
     $('.js-dogImagesSection').html('');
+    const breedName = breed.split(' ').join('/').toLowerCase();
     console.log(breedName);
     getBreed(breedName);
   });
@@ -14,6 +15,7 @@ function handleSubmit() {
 
 
 function getBreed(breed) {
+  
   fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
     .then(response => response.json())
     .then(data => renderImages(data))
@@ -24,7 +26,7 @@ function getBreed(breed) {
 function renderImages(data) {
   
     $('.js-dogImagesSection').append(`
-    <img src="${data['message'][0]}"></img>
+    <img src="${data['message']}"></img>
     `
     )}
 
