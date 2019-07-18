@@ -3,18 +3,18 @@
 /* global $ */
 
 function handleSubmit() {
-  $('.js-dogNumberForm').submit(event => {
+  $('.js-breedsForm').submit(event => {
     event.preventDefault();
-    const number = $('.js-numberInput').val();
+    const breedName = $('.js-breedsInput').val();
     $('.js-dogImagesSection').html('');
-    console.log(number);
-    getDogImage(number);
+    console.log(breedName);
+    getBreed(breedName);
   });
 }
 
 
-function getDogImage(number) {
-  fetch(`https://dog.ceo/api/breeds/image/random/${number}`)
+function getBreed(breed) {
+  fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
     .then(response => response.json())
     .then(data => renderImages(data))
     .catch(error => console.log(error)
@@ -22,13 +22,12 @@ function getDogImage(number) {
 }
 
 function renderImages(data) {
-  for (let i = 0; i < data['message'].length; i++) {
-    console.log(data['message'][i]);
+  
     $('.js-dogImagesSection').append(`
-    <img src="${data['message'][i]}"></img>
-    `);
-  }
-}
+    <img src="${data['message'][0]}"></img>
+    `
+    )}
+
 
 function handleEverything() {
   handleSubmit();
