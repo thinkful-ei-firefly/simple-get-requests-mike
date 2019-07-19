@@ -7,9 +7,10 @@ function handleSubmit() {
     event.preventDefault();
     const breed = $('.js-breedsInput').val();
     $('.js-dogImagesSection').html('');
+    $('.js-breedsInput').val('');
     const breedName = breed.split(' ').join('/').toLowerCase();
-    console.log(breedName);
     getBreed(breedName);
+
   });
 }
 
@@ -24,11 +25,22 @@ function getBreed(breed) {
 }
 
 function renderImages(data) {
-  
+  $('.js-dogImagesSection').html('<h2>Look at this Breed!</h2>')
+  if (data.status === 'error'){
+    $('.js-dogImagesSection').html(`
+    <h2>Error!</h2> 
+    <p>${data.message}</p>
+    <img src = 'https://yourdogfoodstore.com/wp-content/uploads/2016/12/best-pet-supplies-home-sweet-home-dog-bed.jpg'
+    alt = 'empty dog cage' >
+    `)
+    
+  } else {
     $('.js-dogImagesSection').append(`
-    <img src="${data['message']}"></img>
+    <img src="${data['message']}" alt="dog image" ></img>
     `
     )}
+    
+    }
 
 
 function handleEverything() {
